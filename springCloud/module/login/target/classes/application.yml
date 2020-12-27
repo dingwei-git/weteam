@@ -1,0 +1,5 @@
+server:
+  port: 20001
+mybatis:
+  mapperLocations: classpath:mapper/*.xml
+#  type-aliases-package: com.login.dao

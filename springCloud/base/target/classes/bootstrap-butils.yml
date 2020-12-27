@@ -1,0 +1,64 @@
+spring:
+  profiles:
+    active: dev
+  main:
+    allow-bean-definition-overriding: true
+logging:
+  level:
+    com.alibaba.nacos: warn  #解决nacos打印日志的问题
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+---
+spring:
+  profiles: dev
+  cloud:
+    nacos:
+      config:
+        file-extension: yaml
+        server-addr: 8.131.69.238:8848
+        namespace: 2469e93f-38f3-4399-86a8-821c15993ad0
+        group: ${spring.profiles.active}
+      discovery:
+        server-addr: 8.131.69.238:8848
+        namespace: 2469e93f-38f3-4399-86a8-821c15993ad0
+    sentinel:
+      transport:
+        port: 8719
+        dashboard: 8.131.69.238:8849
+#      datasource:
+#        ds1:
+#          nacos:
+#            data-id: ${spring.application.name}-degrade
+#            data-type: json
+#            group-id: degrade
+#            rule-type: degrade
+#            server-addr: ${alibaba.nacos.serveraddr}
+#        ds2:
+#          nacos:
+#            data-id: ${spring.application.name}-flow
+#            data-type: json
+#            group-id: flow
+#            rule-type: flow
+#            server-addr: ${alibaba.nacos.serveraddr}
+
+# rule-type支持的类型   flow，degrade，authority，system, param-flow, gw-flow, gw-api-group
+---
+spring:
+  profiles: production
+  cloud:
+    nacos:
+      config:
+        file-extension: yaml
+        server-addr: localhost:8848
+        namespace: 15a0f772-01f7-11eb-8512-c81f66d3ce7c
+        group: ${spring.profiles.active}
+      discovery:
+        server-addr: localhost:8848
+        namespace: 15a0f772-01f7-11eb-8512-c81f66d3ce7c
+    sentinel:
+      transport:
+        port: 8719
+        dashboard: localhost:8849

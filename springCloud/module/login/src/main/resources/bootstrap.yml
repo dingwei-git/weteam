@@ -1,0 +1,7 @@
+spring:
+  profiles:
+    include: butils
+  application:
+    name: login
+  main:
+    allow-bean-definition-overriding: true
