@@ -1,5 +1,6 @@
 package com.common.anantation;
 
+import com.common.dataSource.DataSourceConfiguration;
 import com.common.dataSource.MethodDynamicDataSourceAspect;
 import org.springframework.context.annotation.Import;
 
@@ -10,6 +11,6 @@ import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
-@Import({MethodDynamicDataSourceAspect.class})
+@Import({MethodDynamicDataSourceAspect.class, DataSourceConfiguration.class})
 public @interface EnableMultiDataSource {
 }
