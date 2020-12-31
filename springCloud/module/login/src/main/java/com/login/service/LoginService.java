@@ -1,5 +1,9 @@
 package com.login.service;
 
+import com.common.utils.RestResult;
+
 public interface LoginService {
-    String login();
+    RestResult login();
+
+    RestResult logins();
 }
