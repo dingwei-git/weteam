@@ -7,17 +7,30 @@ import java.util.regex.Pattern;
  */
 public class RegularUtils {
 
-    private static String positiveInteger = "^[1-9]\\d*$";
-
     /**
-     * 校验是否为正整数(不包括0)
+     * 校验是否为整数
      * @param str
-     * @return
+     * @param type includingZero正整数包括0,noIncludingZero正整数不包括0,integer整数
+     * @return boolean;
      */
-    public static boolean checkPositiveInteger(String str){
-        Pattern pattern = Pattern.compile(positiveInteger);
-        boolean flag = pattern.matcher(str).matches();
-        return flag;
+    public static boolean checkPositiveInteger(String str,String type){
+        boolean flag = false;
+        if("includingZero".equals(type)){
+            Pattern pattern = Pattern.compile(Regular.positiveIntegers);
+            flag = pattern.matcher(str).matches();
+            return flag;
+        }else if("noIncludingZero".equals(type)){
+            Pattern pattern = Pattern.compile(Regular.positiveInteger);
+            flag = pattern.matcher(str).matches();
+            return flag;
+        }else if("integer".equals(type)){
+            Pattern pattern = Pattern.compile(Regular.theInteger);
+            flag = pattern.matcher(str).matches();
+            return flag;
+        }else{
+            return false;
+        }
+
     }
 
 }
