@@ -11,7 +11,6 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 @EnableMultiDataSource
 @EnableRedis
 @EnableProperties
-//@Import({DataSourceConfiguration.class})
 public class LoginApplication {
 
     public static void main(String[] args) {
