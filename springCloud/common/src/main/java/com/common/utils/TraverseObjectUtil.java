@@ -13,8 +13,6 @@ import java.util.regex.Pattern;
  */
 public class TraverseObjectUtil {
 
-    private static String positiveInteger = "^[1-9]\\d*$";
-
     public static JSONObject traverseCameraBriefInfoExes(Object obj){
         Field[] fields=obj.getClass().getDeclaredFields();
         String[] fieldNames=new String[fields.length];
@@ -54,17 +52,6 @@ public class TraverseObjectUtil {
             return "";
         }
         return String.valueOf(obj);
-    }
-
-    /**
-     * 校验是否为正整数(不包括0)
-     * @param str
-     * @return
-     */
-    public static boolean checkPositiveInteger(String str){
-        Pattern pattern = Pattern.compile(positiveInteger);
-        boolean flag = pattern.matcher(str).matches();
-        return flag;
     }
 
     public static List<String> checkOther(List<String> list,String str){
